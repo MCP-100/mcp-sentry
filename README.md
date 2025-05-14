@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/mcp-100-mcp-sentry-badge.png)](https://mseep.ai/app/mcp-100-mcp-sentry)
+
 # mcp-sentry: A Sentry MCP server
 
 [![smithery badge](https://smithery.ai/badge/@qianniuspace/mcp-sentry)](https://smithery.ai/server/@qianniuspace/mcp-sentry)
