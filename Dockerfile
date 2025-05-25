@@ -26,12 +26,16 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 FROM python:3.12-slim-bookworm
 
 WORKDIR /app
- 
+
 COPY --from=uv /root/.local /root/.local
-COPY --from=uv --chown=app:app /app/.venv /app/.venv
+COPY --from=uv /app /app
 
-# Place executables in the environment at the front of the path
-ENV PATH="/app/.venv/bin:$PATH"
+ENV PATH="/root/.local/bin:$PATH"
 
-# when running the container, add --db-path and a bind mount to the host's db file
+# Optionally, add MCP metadata for discoverability
+LABEL mcp.server.name="mcp-sentry" \
+      mcp.server.version="0.6.2" \
+      mcp.server.description="MCP server for retrieving issues from sentry.io"
+
+# Default entrypoint for MCP server (arguments can be passed at runtime)
 ENTRYPOINT ["mcp-sentry"]
